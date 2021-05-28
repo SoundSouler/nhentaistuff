@@ -5,14 +5,13 @@ there will be future updates to this repo in general
 This file was intended to be integrated in another application
 but will hopefully be somethin on its own
 and pls dont hate me, idk RegEx either so soz for the crappy split
-patterns
+patterns in this example we will take the hentai 114431 for a run
 ----------------------------------------------------------------*/
-let DoujinLink = '';
+let DoujinLink = 'https://nhentai.net/g/114431';
 
 
 const request= require("request");
 const cheerio = require('cheerio');
-
 let Doujin;
 request(DoujinLink, (error, response, html)=>{
     console.error('error:', error); 
@@ -126,7 +125,7 @@ function getUploadTime(){
         return uploadTime;
 }
 function getPages(){
-    for (let index = 0; index < BookID; index++) {
+    for (let index = 0; index < TotalPages; index++) {
           Pages[index] = `https://nhentai.net/g/${BookID}/${index+1}`  
     }
     return Pages;
@@ -134,6 +133,7 @@ function getPages(){
 Doujin = {
     'BookID' : BookID,
     'Link': Link,
+    'Title': Title,
     'Artists' : getArtist(),
     'Category' : getCategory(),
     'TotalPages' : getTotalPages(),
