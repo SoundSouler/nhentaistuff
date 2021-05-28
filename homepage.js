@@ -2,8 +2,9 @@ let cheerio = require('cheerio');
 let request = require('request');
 
 
-
-request(`http://127.0.0.1:5500/nhentaipage1.html`,(error, response, html) => {
+//add specific homepage e.g ?home=1
+//add file for popular doujins
+request('https://nhentai.net',(error, response, html) => {
   console.error('error:', error); 
   // Print the error if one occurred
   console.log('statusCode:', response && response.statusCode);
@@ -36,8 +37,8 @@ homePage[i].Title = title.split('\t').join(' ').split('\n').join(' ');
 homePage[i].Thumbnail = thumbnail;
   });
   $('.gallery a').each((i, elem)=>{
-   homePage[i].BookID = $(elem).attr('href').split('/')[4];
-   homePage[i].ThumbnailFull = `https://nhentai.net/g/${$(elem).attr('href').split('/')[4]}/1`;
+   homePage[i].BookID = `${$(elem).attr('href').split('/')[2]}`;
+   homePage[i].ThumbnailFull = `${homePage[i].Link}1`;
   });
   console.log(homePage)
   return [error, response.statusCode, homePage];
