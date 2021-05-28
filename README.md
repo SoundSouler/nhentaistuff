@@ -1,5 +1,5 @@
 # nhentai crap
-***lets you retrieve data from nhentai (webscraping using cheeri_)***
+***lets you retrieve data from nhentai (webscraping using cheerio)***
 
 the getDoujin.js file outputs data in this format:
 ``` 
